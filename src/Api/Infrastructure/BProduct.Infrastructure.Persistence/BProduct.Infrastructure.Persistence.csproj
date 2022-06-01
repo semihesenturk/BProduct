@@ -17,4 +17,10 @@
     </PackageReference>
     <PackageReference Include="Polly" Version="7.2.3" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\BProduct.Common\BProduct.Common.csproj" />
+    <ProjectReference Include="..\..\Core\BProduct.Application\BProduct.Application.csproj" />
+    <ProjectReference Include="..\..\Core\BProduct.Domain\BProduct.Domain.csproj" />
+  </ItemGroup>
 </Project>
