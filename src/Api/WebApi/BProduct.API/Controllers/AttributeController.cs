@@ -26,6 +26,21 @@ namespace BProduct.API.Controllers
         #region Operations
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpPost]
+        public async Task<IActionResult> CreateAttribute(CreateAttributeCommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (result == Guid.Empty)
+            {
+                _logger.LogError("Attribute can not created!");
+                return BadRequest();
+            }
+
+            return Ok(result);
+        }
+
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [HttpGet]
         [Route("GetCategoryAttributes")]
         public async Task<IActionResult> GetCategoryAttributes([FromQuery] GetCategoryAttributesQuery query)

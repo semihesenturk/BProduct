@@ -30,6 +30,6 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         if (result == 0)
             return Guid.Empty;
 
-        return result;
+        return dbEntity.Id;
     }
 }

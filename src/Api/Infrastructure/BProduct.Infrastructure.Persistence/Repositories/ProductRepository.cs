@@ -1,14 +1,14 @@
 ﻿using BProduct.Application.Interfaces.Repositories;
 using BProduct.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+using BProduct.Infrastructure.Persistence.Context;
 
 namespace BProduct.Infrastructure.Persistence.Repositories;
 
 public class ProductRepository : GenericRepository<Product>, IProductRepository
 {
     #region Constructor
-    public ProductRepository(DbContext bproductContext) : base(bproductContext)
+    public ProductRepository(BProductContext bproductContext) : base(bproductContext)
     {
-    } 
+    }
     #endregion
 }

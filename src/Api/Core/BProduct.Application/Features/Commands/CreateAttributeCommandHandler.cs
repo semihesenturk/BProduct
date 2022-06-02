@@ -24,11 +24,16 @@ public class CreateAttributeCommandHandler : IRequestHandler<CreateAttributeComm
     {
         var dbEntity = _mapper.Map<Domain.Models.Attribute>(request);
 
-        var result = await _attributeRepository.AddAsync(dbEntity);
-
-        if (result == 0)
-            return Guid.Empty;
-
+        await _attributeRepository.AddAsync(dbEntity);
+     
         return dbEntity.Id;
+
+
+
+        //var dbEntry = _mapper.Map<Api.Domain.Models.Entry>(request);
+
+        //await _entryRepository.AddAsync(dbEntry);
+
+        //return dbEntry.Id;
     }
 }

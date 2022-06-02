@@ -1,12 +1,12 @@
 ﻿using BProduct.Application.Interfaces.Repositories;
 using BProduct.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+using BProduct.Infrastructure.Persistence.Context;
 
 namespace BProduct.Infrastructure.Persistence.Repositories
 {
     public class ProductAttributeRepository : GenericRepository<ProductAttribute>, IProductAttributeRepository
     {
-        public ProductAttributeRepository(DbContext bproductContext) : base(bproductContext)
+        public ProductAttributeRepository(BProductContext bproductContext) : base(bproductContext)
         {
         }
     }

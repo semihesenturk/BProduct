@@ -85,8 +85,9 @@ public class BProductContext : DbContext
             if (entity.CreateDate == DateTime.MinValue)
             {
                 entity.CreateDate = DateTime.Now;
-                entity.IsDeleted = false;
             }
+            if (entity != null && entity.IsDeleted != false)
+                entity.IsDeleted = false;
         }
     }
     #endregion

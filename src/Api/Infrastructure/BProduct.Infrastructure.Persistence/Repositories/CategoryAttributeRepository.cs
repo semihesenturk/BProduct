@@ -1,11 +1,11 @@
 ﻿using BProduct.Application.Interfaces.Repositories;
-using Microsoft.EntityFrameworkCore;
+using BProduct.Infrastructure.Persistence.Context;
 
 namespace BProduct.Infrastructure.Persistence.Repositories;
 
 public class CategoryAttributeRepository : GenericRepository<Domain.Models.CategoryAttribute>, ICategoryAttributeRepository
 {
-    public CategoryAttributeRepository(DbContext bproductContext) : base(bproductContext)
+    public CategoryAttributeRepository(BProductContext bproductContext) : base(bproductContext)
     {
     }
 
