@@ -27,13 +27,5 @@ public class CreateAttributeCommandHandler : IRequestHandler<CreateAttributeComm
         await _attributeRepository.AddAsync(dbEntity);
      
         return dbEntity.Id;
-
-
-
-        //var dbEntry = _mapper.Map<Api.Domain.Models.Entry>(request);
-
-        //await _entryRepository.AddAsync(dbEntry);
-
-        //return dbEntry.Id;
     }
 }

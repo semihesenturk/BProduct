@@ -9,34 +9,39 @@ namespace BProduct.Application.Mapping
     {
         public MappingProfile()
         {
+            CreateMap<CreateAttributeCommand, Domain.Models.Attribute>()
+                .ReverseMap();
+
+            CreateMap<GetAttributeViewModel, Domain.Models.Attribute>()
+                .ReverseMap();
+
+            CreateMap<CreateCategoryAttributeCommand, CategoryAttribute>()
+               .ReverseMap();
+
+            CreateMap<GetCategoryAttributesViewModel, CategoryAttribute>()
+                .ReverseMap();
+
+
             CreateMap<CreateProductCommand, Product>()
                 .ReverseMap();
 
             CreateMap<GetProductViewModel, Product>()
                 .ReverseMap();
 
-           
-            CreateMap<GetCategoryAttributesViewModel, CategoryAttribute>()
+
+            CreateMap<CreateCategoryCommand, Category>()
                 .ReverseMap();
 
-            CreateMap<CreateCategoryAttributeCommand, CategoryAttribute>()
-                .ReverseMap();
-
-            
-            CreateMap<CreateAttributeCommand, Domain.Models.Attribute>()
-                .ReverseMap();
-
-            
             CreateMap<GetCategoryViewModel, Category>()
+                .ReverseMap();
+
+
+            CreateMap<CreateProductAttributeCommand, ProductAttribute>()
                 .ReverseMap();
 
             CreateMap<GetProductAttributesViewModel, ProductAttribute>()
                 .ReverseMap();
 
-            CreateMap<CreateProductAttributeCommand, ProductAttribute>()
-                .ReverseMap();
-
-            
         }
     }
 }

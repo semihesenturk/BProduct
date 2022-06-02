@@ -6,4 +6,6 @@ public class GetProductViewModel
     public int ProductCatalogId { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
+
+    public ICollection<GetProductAttributesViewModel> Attributes { get; set; }
 }

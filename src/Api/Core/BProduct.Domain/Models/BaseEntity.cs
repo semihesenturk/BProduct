@@ -6,5 +6,5 @@ public abstract class BaseEntity
 
     public DateTime CreateDate { get; set; }
 
-    public bool IsDeleted { get; set; }
+    public bool? IsDeleted { get; set; }
 }

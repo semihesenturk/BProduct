@@ -7,6 +7,11 @@ public class GetCategoryAttributesQuery : IRequest<List<GetCategoryAttributesVie
 {
     public Guid CategoryId { get; set; }
 
+    public GetCategoryAttributesQuery()
+    {
+
+    }
+
     public GetCategoryAttributesQuery(Guid categoryId)
     {
         CategoryId = categoryId;

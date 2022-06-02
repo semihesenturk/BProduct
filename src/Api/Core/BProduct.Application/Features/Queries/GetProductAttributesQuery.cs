@@ -10,4 +10,8 @@ public class GetProductAttributesQuery : IRequest<List<GetProductAttributesViewM
     {
         ProductId = productId;
     }
+    public GetProductAttributesQuery()
+    {
+
+    }
 }

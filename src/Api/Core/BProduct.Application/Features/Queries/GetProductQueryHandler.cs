@@ -22,7 +22,8 @@ public class GetProductQueryHandler : IRequestHandler<GetProductQuery, GetProduc
 
     public async Task<GetProductViewModel> Handle(GetProductQuery request, CancellationToken cancellationToken)
     {
-        var dbEntity = await _productRepository.GetByIdAsync(request.Id);
+        var dbEntity = await _productRepository.GetSingleAsync(s => s.Id == request.Id, false, s => s.Attributes);
+        //var dbEntity = await _categoryRepository.GetSingleAsync(s => s.Id == request.Id, false, s => s.Attributes);
 
         return _mapper.Map<GetProductViewModel>(dbEntity);
     }
