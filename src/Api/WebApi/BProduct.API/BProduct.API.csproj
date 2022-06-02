@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Common\BProduct.Common\BProduct.Common.csproj" />
     <ProjectReference Include="..\..\Core\BProduct.Application\BProduct.Application.csproj" />
     <ProjectReference Include="..\..\Core\BProduct.Domain\BProduct.Domain.csproj" />
