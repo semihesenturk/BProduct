@@ -36,7 +36,7 @@ namespace BProduct.API.Controllers
                 _logger.LogError($"Category can not be found!");
                 return NotFound();
             }
-                
+
             return Ok(result);
         }
 
@@ -52,7 +52,39 @@ namespace BProduct.API.Controllers
                 _logger.LogError($"Category can not be created!");
                 return BadRequest(result);
             }
-                
+
+            return Ok(result);
+        }
+
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpPut]
+        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (result == Guid.Empty)
+            {
+                _logger.LogError($"Category can not be updated!");
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCategory(Guid id)
+        {
+            DeleteCategoryCommand command = new DeleteCategoryCommand(id);
+
+            var result = await _mediator.Send(command);
+
+            if (!result)
+            {
+                _logger.LogError($"Category can not be deleted!");
+                return BadRequest(result);
+            }
+
             return Ok(result);
         }
         #endregion

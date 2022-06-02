@@ -42,6 +42,8 @@ namespace BProduct.API.Controllers
             return Ok(result);
         }
 
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
         {
@@ -50,6 +52,40 @@ namespace BProduct.API.Controllers
             if (result == Guid.Empty)
             {
                 _logger.LogError("Product can not be saved!");
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (result == Guid.Empty)
+            {
+                _logger.LogError("Product can not be updated!");
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(Guid id)
+        {
+            DeleteProductCommand command = new DeleteProductCommand(id);
+
+            var result = await _mediator.Send(command);
+
+            if (!result)
+            {
+                _logger.LogError("Product can not be deleted!");
                 return NotFound();
             }
 
