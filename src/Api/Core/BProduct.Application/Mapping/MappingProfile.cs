@@ -14,6 +14,21 @@ namespace BProduct.Application.Mapping
 
             CreateMap<GetCategoryAttributesViewModel, CategoryAttribute>()
                 .ReverseMap();
+
+            CreateMap<CreateCategoryAttributeCommand, CategoryAttribute>()
+                .ReverseMap();
+
+            CreateMap<CreateAttributeCommand, Domain.Models.Attribute>()
+                .ReverseMap();
+
+            CreateMap<GetCategoryViewModel, Category>()
+                .ReverseMap();
+
+            CreateMap<GetProductAttributesViewModel, ProductAttribute>()
+                .ReverseMap();
+
+            CreateMap<CreateProductAttributeCommand, ProductAttribute>()
+                .ReverseMap();
         }
     }
 }
