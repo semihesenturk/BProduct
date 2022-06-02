@@ -6,7 +6,7 @@ namespace BProduct.Infrastructure.Persistence.EntityConfigurations;
 
 public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : BaseEntity
 {
-    public void Configure(EntityTypeBuilder<T> builder)
+    public virtual void Configure(EntityTypeBuilder<T> builder)
     {
         builder.HasKey(x => x.Id);
 
