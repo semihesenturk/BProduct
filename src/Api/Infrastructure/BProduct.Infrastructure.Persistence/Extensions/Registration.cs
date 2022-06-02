@@ -23,8 +23,8 @@ public static class Registration
             });
 
         //Seed startup datas
-        var seedData = new SeedData();
-        seedData.SeedAsync(configuration).GetAwaiter().GetResult();
+        //var seedData = new SeedData();
+        //seedData.SeedAsync(configuration).GetAwaiter().GetResult();
 
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();

@@ -76,7 +76,6 @@ namespace BProduct.API.Controllers
 
             return Ok(result);
         }
-
         #endregion
     }
 }
