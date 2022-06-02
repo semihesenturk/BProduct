@@ -27,9 +27,9 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
         var result = await _productRepository.AddAsync(dbEntity);
 
-        if (result > 0)
-            return dbEntity.Id;
+        if (result == 0)
+            return Guid.Empty;
 
-        return Guid.Empty;
+        return result;
     }
 }

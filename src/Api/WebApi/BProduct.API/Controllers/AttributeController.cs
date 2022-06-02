@@ -12,12 +12,14 @@ namespace BProduct.API.Controllers
     {
         #region Variables
         private readonly IMediator _mediator;
+        private readonly ILogger<AttributeController> _logger;
         #endregion
 
         #region Constructor
-        public AttributeController(IMediator mediator)
+        public AttributeController(IMediator mediator, ILogger<AttributeController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         #endregion
 
@@ -31,7 +33,10 @@ namespace BProduct.API.Controllers
             var result = await _mediator.Send(query);
 
             if (result.Count == 0)
+            {
+                _logger.LogError($"{query.CategoryId} has no attribute!");
                 return NotFound();
+            }
 
             return Ok(result);
         }
@@ -45,7 +50,10 @@ namespace BProduct.API.Controllers
             var result = await _mediator.Send(command);
 
             if (result == Guid.Empty)
+            {
+                _logger.LogError("Attribute can not be saved!");
                 return NotFound();
+            }
 
             return Ok(result);
         }
@@ -59,7 +67,10 @@ namespace BProduct.API.Controllers
             var result = await _mediator.Send(query);
 
             if (result.Count == 0)
+            {
+                _logger.LogError($"{query.ProductId} has no attribute!");
                 return NotFound();
+            }
 
             return Ok(result);
         }
@@ -72,7 +83,10 @@ namespace BProduct.API.Controllers
         {
             var result = await _mediator.Send(command);
             if (result == Guid.Empty)
+            {
+                _logger.LogError("Attribute can not be saved!");
                 return NotFound();
+            }
 
             return Ok(result);
         }

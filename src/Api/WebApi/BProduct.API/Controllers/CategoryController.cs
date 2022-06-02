@@ -12,12 +12,14 @@ namespace BProduct.API.Controllers
     {
         #region Variables
         private readonly IMediator _mediator;
+        private readonly ILogger<CategoryController> _logger;
         #endregion
 
         #region Constructor
-        public CategoryController(IMediator mediator)
+        public CategoryController(IMediator mediator, ILogger<CategoryController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         #endregion
 
@@ -30,8 +32,11 @@ namespace BProduct.API.Controllers
             var result = await _mediator.Send(new GetCategoryQuery() { Id = id });
 
             if (result is null)
+            {
+                _logger.LogError($"Category can not be found!");
                 return NotFound();
-
+            }
+                
             return Ok(result);
         }
 
@@ -43,8 +48,11 @@ namespace BProduct.API.Controllers
             var result = await _mediator.Send(command);
 
             if (result == Guid.Empty)
+            {
+                _logger.LogError($"Category can not be created!");
                 return BadRequest(result);
-
+            }
+                
             return Ok(result);
         }
         #endregion

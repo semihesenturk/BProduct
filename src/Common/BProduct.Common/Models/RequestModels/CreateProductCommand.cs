@@ -1,21 +1,11 @@
 ﻿using MediatR;
 
-namespace BProduct.Common.Models.RequestModels;
-
-public class CreateProductCommand : IRequest<Guid>
+namespace BProduct.Common.Models.RequestModels
 {
-    public int ProductCatalogId { get; set; }
-    public CreateProductAttributeCommand ProductAttributes { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-
-    #region Constructor
-    public CreateProductCommand(int productCatalogId, CreateProductAttributeCommand productAttributes, string name, decimal price)
+    public class CreateProductCommand : IRequest<Guid>
     {
-        ProductCatalogId = productCatalogId;
-        ProductAttributes = productAttributes;
-        Name = name;
-        Price = price;
+        public int ProductCatalogId { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
     }
-    #endregion
 }
