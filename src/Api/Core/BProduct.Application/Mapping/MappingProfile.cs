@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BProduct.Common.Models.Queries;
 using BProduct.Common.Models.RequestModels;
 using BProduct.Domain.Models;
 
@@ -9,6 +10,9 @@ namespace BProduct.Application.Mapping
         public MappingProfile()
         {
             CreateMap<CreateProductCommand, Product>()
+                .ReverseMap();
+
+            CreateMap<GetCategoryAttributesViewModel, CategoryAttribute>()
                 .ReverseMap();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BProduct.Application.Interfaces.Repositories;
 using BProduct.Infrastructure.Persistence.Context;
+using BProduct.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,8 +26,9 @@ public static class Registration
         var seedData = new SeedData();
         seedData.SeedAsync(configuration).GetAwaiter().GetResult();
 
-        //services.AddScoped<IProductRepository, ProductRepository>();
-        //services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICategoryAttributeRepository, CategoryAttributeRepository>();
 
         return services;
     }
